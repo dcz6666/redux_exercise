@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-import store from './store'
-import axios from 'axios'
+import store from '../store'
+// import axios from 'axios'
 // import { CHANGE_INPUT , ADD_ITEM , DELETE_ITEM } from './store/actionTypes'
-import {changeInputAction,addItemAction ,deleteItemAction } from './store/actionCreators'
-import TodoListUI from './TodoListUI'
+import {changeInputAction,addItemAction ,deleteItemAction } from '../store/actionCreators'
+import TodoListUI from '../components/TodoListUI'
 // const data=[
 //     '早8点开晨会，分配今天的开发工作',
 //     '早9点和项目经理作开发需求讨论会',
@@ -34,9 +34,9 @@ class TodoList extends Component {
          );
     }
     componentDidMount(){
-        axios.get('data.json').then((res)=>{
-            console.log("res",res)
-        })
+        // axios.get('data.json').then((res)=>{
+        //     console.log("res",res)
+        // })
     }
  
     storeChange(){
@@ -44,10 +44,6 @@ class TodoList extends Component {
         this.setState(store.getState())
     }
     changeInputValue(e){
-        // const action = {
-        //     type: CHANGE_INPUT,
-        //     value:e.target.value
-        // }
         const action = changeInputAction(e.target.value);
         store.dispatch(action)
     }
